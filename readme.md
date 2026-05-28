@@ -1,6 +1,58 @@
+Here is the updated documentation with the Vite path alias setup integrated directly after the installation step. It explains exactly what elements are introduced, what parts are editable, and the value types involved, with no citations included.
+
+---
+
 # ⚡ RapidCrud
 
 A lightning-fast, zero-config React micro-framework engine designed for automated file-system routing and predictive data pre-fetching.
+
+---
+
+## 📦 Installation & Setup
+
+Install the core package using your preferred node package manager:
+
+```bash
+npm i rapidcrud
+
+```
+
+### ⚙️ Required Vite Path Configuration
+
+Because RapidCrud relies on structured file scanning, you must add path aliases to your project build configuration. Update your root `vite.config.js` file to include the `@` alias resolver:
+
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'), // Enforces standardized internal source mapping
+    },
+  },
+});
+
+```
+
+#### 📋 Configuration Reference Details
+
+* **`plugins` Array**:
+* **Editable**: Yes. You can append more development plugins here (e.g., visualizers or linters) alongside standard React.
+* **Value Type**: `Array` of Vite plugin objects.
+
+
+* **`resolve.alias` Object**:
+* **Editable**: No. The `'@'` alias must point directly to your `./src` directory for the internal routing engine to find your components.
+* **Value Type**: `Object` mapping alias strings to absolute filesystem paths resolved via Node's `path` module.
+
+
 
 ---
 

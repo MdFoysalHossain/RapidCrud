@@ -1,7 +1,5 @@
 # ⚡ RapidCrud
 
-
-
 A lightning-fast, zero-config React micro-framework engine designed for automated file-system routing and predictive data pre-fetching.
 
 ---
@@ -12,35 +10,40 @@ A lightning-fast, zero-config React micro-framework engine designed for automate
 
 RapidCrud scans two dedicated directories to automatically assemble your application routing landscape natively:
 
-* 
-**Single Pages (`src/pages/`)**: Any `.jsx` file created under this folder automatically maps to a public URL path. For example, `profile.jsx` becomes `http://localhost:port/profile`.
-
-
+* **Single Pages (`src/pages/`)**: Any `.jsx` file created under this folder automatically maps to a public URL path. For example, `profile.jsx` becomes `http://localhost:port/profile`.
 > ⚠️ **Note:** File names are case-sensitive and **must** start with a lowercase letter.
-> 
-> 
 
 
-* 
-**Dynamic Pages (`src/dynamicPages/`)**: Create a subfolder whose name acts as the base URL segment. Inside that folder, wrap your file layout name in square brackets (e.g., `[id].jsx` or `[anything].jsx`) to transform it into a fully dynamic route segment. For example, `src/dynamicPages/rollCall/[id].jsx` resolves to `http://localhost:port/rollCall/123`.
-
-
+* **Dynamic Pages (`src/dynamicPages/`)**: Create a subfolder whose name acts as the base URL segment. Inside that folder, wrap your file layout name in square brackets (e.g., `[id].jsx` or `[anything].jsx`) to transform it into a fully dynamic route segment. For example, `src/dynamicPages/rollCall/[id].jsx` resolves to `http://localhost:port/rollCall/123`.
 
 #### 📂 Recommended Directory Structure
 
 ```text
 my-project/
 ├── src/
-[cite_start]│   ├── pages/                  <-- Static application pages folder [cite: 5]
-[cite_start]│   │   ├── home.jsx            <-- Resolves directly to "/" [cite: 6]
-[cite_start]│   │   └── profile.jsx         <-- Resolves directly to "/profile" [cite: 6]
-[cite_start]│   ├── dynamicPages/           <-- Dynamic application routes folder [cite: 6]
-[cite_start]│   │   └── profiles/           <-- Matching dynamic folder URL segment [cite: 6, 7]
-[cite_start]│   │       └── [id].jsx        <-- Dynamic parametric component layout [cite: 7]
-[cite_start]│   ├── app.jsx                 <-- Main application layout wrapper [cite: 7]
-[cite_start]│   └── main.jsx                <-- Project DOM mounting entry point [cite: 7]
+│   ├── pages/                  <-- Static application pages folder
+│   │   ├── home.jsx            <-- Resolves directly to "/"
+│   │   └── profile.jsx         <-- Resolves directly to "/profile"
+│   ├── dynamicPages/           <-- Dynamic application routes folder
+│   │   └── profiles/           <-- Matching dynamic folder URL segment
+│   │       └── [id].jsx        <-- Dynamic parametric component layout
+│   ├── app.jsx                 <-- Main application layout wrapper
+│   └── main.jsx                <-- Project DOM mounting entry point
 
 ```
+
+#### 📋 File Routing Reference Details
+
+* **`src/pages/` Folder Structure**:
+* **Editable**: Yes. You can add, delete, or rename files freely to modify your application's static URL mapping.
+* **Value Type / Rules**: File extensions must be `.jsx`. Naming conventions strictly require a lowercase starting letter.
+
+
+* **`src/dynamicPages/` Folder Structure**:
+* **Editable**: Yes. You can structure dynamic URL sub-segments by managing folders here.
+* **Value Type / Rules**: Subfolders must use standard alpha strings. Layout filenames *must* be wrapped within square brackets `[...]` followed by `.jsx`. The parameter key inside the brackets is extracted as a string variable passed downstream to your pages.
+
+
 
 ---
 
@@ -52,38 +55,46 @@ Drop this component directly inside your root `App.jsx` file. It acts as the cor
 
 ```jsx
 import React from 'react'
-[cite_start]import { SmartLink, SmartRouter } from 'rapidcrud' [cite: 8]
+import { SmartLink, SmartRouter } from 'rapidcrud'
 
 function App() {
   return (
-    [cite_start]<div style={{ maxWidth: '800px', margin: '0 auto', fontFamily: 'system-ui, sans-serif', padding: '20px' }}> [cite: 8]
+    <div style={{ maxWidth: '800px', margin: '0 auto', fontFamily: 'system-ui, sans-serif', padding: '20px' }}>
       
       {/* Global Header Layout */}
-      [cite_start]<header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #eaeaea', paddingBottom: '20px' }}> [cite: 9]
-        [cite_start]<h1 style={{ margin: 0, fontSize: '24px' }}>⚡ RapidCrud App</h1> [cite: 9]
-        [cite_start]<nav style={{ display: 'flex', gap: '15px' }}> [cite: 9]
-          [cite_start]<SmartLink to="/" style={{ textDecoration: 'none', color: '#333', fontWeight: '500' }}>Home</SmartLink> [cite: 9, 10]
-          [cite_start]<SmartLink to="/profile" style={{ textDecoration: 'none', color: '#333', fontWeight: '500' }}>Profile</SmartLink> [cite: 10]
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #eaeaea', paddingBottom: '20px' }}>
+        <h1 style={{ margin: 0, fontSize: '24px' }}>⚡ RapidCrud App</h1>
+        <nav style={{ display: 'flex', gap: '15px' }}>
+          <SmartLink to="/" style={{ textDecoration: 'none', color: '#333', fontWeight: '500' }}>Home</SmartLink>
+          <SmartLink to="/profile" style={{ textDecoration: 'none', color: '#333', fontWeight: '500' }}>Profile</SmartLink>
         </nav>
       </header>
 
       {/* Dynamic Content Pipeline Injected Safely Here */}
-      [cite_start]<main style={{ padding: '40px 0' }}> [cite: 10]
-        [cite_start]<SmartRouter /> [cite: 11]
+      <main style={{ padding: '40px 0' }}>
+        <SmartRouter />
       </main>
 
       {/* Global Footer Layout */}
-      [cite_start]<footer style={{ borderTop: '1px solid #eaeaea', paddingTop: '20px', textAlign: 'center', color: '#888', fontSize: '14px' }}> [cite: 11]
-        [cite_start]Built natively using the RapidCrud Performance Engine Architecture [cite: 11]
-      [cite_start]</footer> [cite: 11]
+      <footer style={{ borderTop: '1px solid #eaeaea', paddingTop: '20px', textAlign: 'center', color: '#888', fontSize: '14px' }}>
+        Built natively using the RapidCrud Performance Engine Architecture
+      </footer>
       
-    [cite_start]</div> [cite: 12]
+    </div>
   )
 }
 
-[cite_start]export default App [cite: 12]
+export default App
 
 ```
+
+#### 📋 Component Element Details
+
+* **`<SmartRouter />` Component**:
+* **Editable / Props**: No. It accepts no props and handles routing automatically. It is a drop-and-forget component.
+* **Output/Behavior Type**: Renders valid React JSX elements dynamically inside the application viewport matching the browser's current active `window.location.pathname`.
+
+
 
 ---
 
@@ -93,20 +104,53 @@ A highly optimized alternative to standard navigation links. It smoothly manages
 
 ```jsx
 <SmartLink 
-    to="/profile"                                           // Target route path. [cite_start]Maps to your file name inside src/pages/ [cite: 14, 15]
-    fetch="https://jsonplaceholder.typicode.com/users/1"    // API endpoint URL. [cite_start]Omit if page doesn't fetch data [cite: 15, 16]
-    id="profileData"                                        // Storage allocation key. [cite_start]Required if using 'fetch' to pass data downstream [cite: 16, 17]
-    prefetchOn="hover"                                      // Trigger type: "hover" | "click". [cite_start]Default is "hover" [cite: 17, 18]
-    priority="high"                                         // Download queue urgency priority: "low" | "medium" | "high". [cite_start]Default is "low" [cite: 18, 19]
-    [cite_start]className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow" // Supports standard Tailwind or custom global CSS classes [cite: 19, 20]
-    [cite_start]style={{ cursor: 'pointer' }}                           // Standard React inline style fallback objects [cite: 20, 21, 22]
-    target="_self"                                          // Standard HTML anchor target rules: "_self" | [cite_start]"_blank" | etc. [cite: 22, 23]
-    [cite_start]aria-label="View user profile"                          // Accessibility string configurations for screen-readers [cite: 23, 24]
+    to="/profile"                                           // Target route path. Maps to your file name inside src/pages/
+    fetch="https://jsonplaceholder.typicode.com/users/1"    // API endpoint URL. Omit if page doesn't fetch data
+    id="profileData"                                        // Storage allocation key. Required if using 'fetch' to pass data downstream
+    prefetchOn="hover"                                      // Trigger type: "hover" | "click". Default is "hover"
+    priority="high"                                         // Download queue urgency priority: "low" | "medium" | "high". Default is "low"
+    className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow" // Supports standard Tailwind or custom global CSS classes
+    style={{ cursor: 'pointer' }}                           // Standard React inline style fallback objects
+    target="_self"                                          // Standard HTML anchor target rules: "_self" | "_blank" | etc.
+    aria-label="View user profile"                          // Accessibility string configurations for screen-readers
 >
     View Profile Instantly
-[cite_start]</SmartLink> [cite: 24]
+</SmartLink>
 
 ```
+
+#### 📋 Component Element Details
+
+* **`to` Prop**:
+* **Editable**: Yes. Change it to route users to different paths.
+* **Value Type**: `String`. Must match a valid route path mapped directly to a file name in your `src/pages` or `src/dynamicPages` configuration folders.
+
+
+* **`fetch` Prop**:
+* **Editable**: Yes. Fully customizable backend address target.
+* **Value Type**: `String`. A standard valid API resource endpoint URL.
+
+
+* **`id` Prop**:
+* **Editable**: Yes. Must be a unique namespace key.
+* **Value Type**: `String`. Serves as the memory state indexing address used by downstream subscriber components.
+
+
+* **`prefetchOn` Prop**:
+* **Editable**: Yes.
+* **Value Type**: `String` Enum. Accepts exactly `"hover"` or `"click"`. Defaults internally to `"hover"`.
+
+
+* **`priority` Prop**:
+* **Editable**: Yes.
+* **Value Type**: `String` Enum. Accepts exactly `"low"`, `"medium"`, or `"high"`. Defaults internally to `"low"`.
+
+
+* **`className` / `style` / `target` / `aria-label` Props**:
+* **Editable**: Yes.
+* **Value Type**: Standard browser runtime strings or native object representations mapping straight down to underlying HTML anchor properties.
+
+
 
 ---
 
@@ -116,52 +160,55 @@ Use the custom hook `useSmartData` provided by the core engine inside your targe
 
 ```jsx
 import React from 'react';
-[cite_start]import { useSmartData } from 'rapidcrud'; [cite: 25]
+import { useSmartData } from 'rapidcrud';
 
 export default function Profile() {
-    [cite_start]// "id" matches the tracking key string passed into your <SmartLink /> component [cite: 26, 27]
-    [cite_start]const { data, state, error } = useSmartData('profileData'); [cite: 26]
+    // "id" matches the tracking key string passed into your <SmartLink /> component
+    const { data, state, error } = useSmartData('profileData');
 
-    [cite_start]console.log("Profile Page - Smart Data State:", { data, state, error }); [cite: 27]
+    console.log("Profile Page - Smart Data State:", { data, state, error });
     
     return (
         <div>
-          [cite_start]<h2>User Profile Dashboard</h2> [cite: 28]
+          <h2>User Profile Dashboard</h2>
           
-          [cite_start]{state === 'loading' && <p style={{ color: '#666' }}>Fetching API payloads...</p>} [cite: 28]
-          [cite_start]{state === 'error' && <p style={{ color: 'red' }}>Error: {error}</p>} [cite: 28, 29]
+          {state === 'loading' && <p style={{ color: '#666' }}>Fetching API payloads...</p>}
+          {state === 'error' && <p style={{ color: 'red' }}>Error: {error}</p>}
           
-          {state === 'loaded' && data ? [cite_start]( [cite: 29]
-              [cite_start]<div style={{ background: '#f4f4f4', padding: '20px', borderRadius: '8px', marginTop: '15px' }}> [cite: 29]
-                [cite_start]<h3>Account Owner: {data.name}</h3> [cite: 29]
-                [cite_start]<p><strong>Email:</strong> {data.email}</p> [cite: 30]
-                [cite_start]<p><strong>Company:</strong> {data.company?.name}</p> [cite: 30]
-                [cite_start]<p><strong>City:</strong> {data.address?.city}</p> [cite: 30]
-              [cite_start]</div> [cite: 30]
+          {state === 'loaded' && data ? (
+              <div style={{ background: '#f4f4f4', padding: '20px', borderRadius: '8px', marginTop: '15px' }}>
+                <h3>Account Owner: {data.name}</h3>
+                <p><strong>Email:</strong> {data.email}</p>
+                <p><strong>Company:</strong> {data.company?.name}</p>
+                <p><strong>City:</strong> {data.address?.city}</p>
+              </div>
           ) : (
-              [cite_start]state !== 'loading' && <p style={{ color: '#999' }}>No data loaded. Navigate from Home.</p> [cite: 31]
+              state !== 'loading' && <p style={{ color: '#999' }}>No data loaded. Navigate from Home.</p>
           )}
         </div>
-    [cite_start]); [cite: 31]
-[cite_start]} [cite: 32]
+    );
+}
 
 ```
 
-### 📊 Reactive Payload Schema
+#### 📋 Custom Hook Details
 
-The custom state payload hook returns 3 precise reactive parameters:
+* **`useSmartData('id')` Argument**:
+* **Editable**: Yes. Must match the exact `id` string configuration provided inside the initial caller `<SmartLink />` component.
+* **Value Type**: `String`.
 
-| Output Key | Data Type Structure | Type / Value Examples |
-| --- | --- | --- |
-| **`data`** | `null` | `Object` | `Array` | <br>`null`, `{"name": "Leanne Graham", ...}` 
 
- |
-| **`state`** | `String` (Strict Finite Enum) | <br>`"default"`, `"loading"`, `"inPromise"`, `"loaded"`, `"error"` 
+* **Returned Yield Destructuring Object**:
+* **Editable**: No. These parameter fields represent read-only internal memory state variables dispatched straight from the framework engine.
+* **Value Schema Matrix:**
 
- |
-| **`error`** | `null` | `String` | <br>`null`, `"Failed to fetch"`, `"404 Not Found"` 
 
- |
+
+| Variable Key | Editable | Value Data Type Structure | Type / Value Examples |
+| --- | --- | --- | --- |
+| **`data`** | No | `null` | `Object` | `Array` | Contains parsed JSON payload objects on success or remains `null` during runtime transitions. |
+| **`state`** | No | `String` (Strict Finite Enum) | Evaluates sequentially across: `"default"`, `"loading"`, `"inPromise"`, `"loaded"`, or `"error"`. |
+| **`error`** | No | `null` | `String` | Contains descriptive network error logs like `"Failed to fetch"`, `"404 Not Found"`, or stays `null`. |
 
 ---
 
@@ -171,48 +218,71 @@ An automated fallback data hydrator component designed specifically for dynamic,
 
 ```jsx
 import React from 'react';
-[cite_start]import { SmartLoad } from 'rapidcrud'; [cite: 36, 37]
+import { SmartLoad } from 'rapidcrud';
 
-[cite_start]export default function DynamicProfile({ params }) { [cite: 37]
+export default function DynamicProfile({ params }) {
   return (
     <SmartLoad
-      [cite_start]fetch={`https://jsonplaceholder.typicode.com/users/${params.id}`} [cite: 37]
-      [cite_start]id={`profile_${params.id}_data`} [cite: 37]
+      fetch={`https://jsonplaceholder.typicode.com/users/${params.id}`}
+      id={`profile_${params.id}_data`}
 
-      [cite_start]// 1. Injects and fires layout wrapper markup ONLY when state evaluates to 'loaded' [cite: 37]
-      [cite_start]onSuccess={(data) => ( [cite: 37]
-          [cite_start]<div className="p-6 max-w-xl mx-auto"> [cite: 38]
-            [cite_start]<title>User Data</title> [cite: 38]
-            [cite_start]<h1 className="text-3xl font-bold mb-4 text-white text-center">User Lookup Portal</h1> [cite: 38]
+      // 1. Injects and fires layout wrapper markup ONLY when state evaluates to 'loaded'
+      onSuccess={(data) => (
+          <div className="p-6 max-w-xl mx-auto">
+            <title>User Data</title>
+            <h1 className="text-3xl font-bold mb-4 text-white text-center">User Lookup Portal</h1>
             
-            [cite_start]<div className="bg-green-50 p-4 rounded-xl border border-green-200"> [cite: 39]
-                [cite_start]<h2 className="text-lg font-bold text-green-900">{data.name}</h2> [cite: 39]
-                [cite_start]<p className="text-gray-600">{data.email}</p> [cite: 39]
-            [cite_start]</div> [cite: 39]
-          [cite_start]</div> [cite: 39]
+            <div className="bg-green-50 p-4 rounded-xl border border-green-200">
+                <h2 className="text-lg font-bold text-green-900">{data.name}</h2>
+                <p className="text-gray-600">{data.email}</p>
+            </div>
+          </div>
       )}
     >
-      [cite_start]{/* 2. Handles Loading placeholders and Error messages inline using a declarative render prop function! [cite: 40] */}
-      [cite_start]{({ state, error }) => { [cite: 40]
-          [cite_start]if (state === 'loading' || state === 'inPromise') { [cite: 40, 41]
-              [cite_start]return <div className="text-blue-500 font-medium animate-pulse">Synchronizing profile layout...</div>; [cite: 41]
-          [cite_start]} [cite: 41]
+      {/* 2. Handles Loading placeholders and Error messages inline using a declarative render prop function! */}
+      {({ state, error }) => {
+          if (state === 'loading' || state === 'inPromise') {
+              return <div className="text-blue-500 font-medium animate-pulse">Synchronizing profile layout...</div>;
+          }
 
-          [cite_start]if (state === 'error') { [cite: 42]
+          if (state === 'error') {
               return (
-                  [cite_start]<div className="flex items-center justify-center px-4 mt-4 rounded-3xl text-red-500 font-bold"> [cite: 42]
-                      {error || [cite_start]"An unexpected framework error aborted the view render pipeline."} [cite: 42, 43]
-                  [cite_start]</div> [cite: 43]
+                  <div className="flex items-center justify-center px-4 mt-4 rounded-3xl text-red-500 font-bold">
+                      {error || "An unexpected framework error aborted the view render pipeline."}
+                  </div>
               );
-          [cite_start]} [cite: 43]
+          }
 
-          [cite_start]return null; [cite: 44]
-      [cite_start]}} [cite: 45]
-    [cite_start]</SmartLoad> [cite: 45]
-  [cite_start]); [cite: 45]
-[cite_start]} [cite: 46]
+          return null;
+      }}
+    </SmartLoad>
+  );
+}
 
 ```
+
+#### 📋 Component Element Details
+
+* **`fetch` Prop**:
+* **Editable**: Yes. Use template literals to map URL parameters (`params`) right into your resource fetch requests.
+* **Value Type**: `String`. A standard valid API resource endpoint URL.
+
+
+* **`id` Prop**:
+* **Editable**: Yes. Assign a unique cache address tracker for this dynamic entity.
+* **Value Type**: `String`.
+
+
+* **`onSuccess` Prop Callback**:
+* **Editable**: Yes. Write your own custom user interface presentation elements inside this render function block.
+* **Value Type / Output**: A functional callback returning native React JSX. It is called **only** when the server successfully responds with a `200 OK` structure and the internal state moves to `"loaded"`. It provides a read-only parsed `data` payload parameter (`Object` or `Array`).
+
+
+* **Component Children Inner Wrapper Block**:
+* **Editable**: Yes. Used to manage explicit fallback components like loading spinner placeholders and crash alerts.
+* **Value Type / Output**: An inline render function prop block providing an argument object containing read-only fields `{ state, error }`. Your implementation should return custom JSX blocks tracking structural pipeline variations.
+
+
 
 ---
 

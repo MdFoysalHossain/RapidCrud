@@ -336,4 +336,4 @@ export default function DynamicProfile({ params }) {
 
 ## 📄 License
 
-Distributed under the MIT License. Built with ⚡ by the RapidCrud Core Engine Development Team.
+Distributed under the MIT License. Built with ⚡ by Foysal Hossain.

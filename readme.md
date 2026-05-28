@@ -54,7 +54,7 @@ export default defineConfig({
 
 ## 🚀 Core Features
 
-### 1. Dual-Mode File System Routing
+#### 🔀 Dual-Mode File System Routing
 
 RapidCrud scans two dedicated directories to automatically assemble your application routing landscape natively:
 

@@ -1,7 +1,3 @@
-Here is the updated documentation with the Vite path alias setup integrated directly after the installation step. It explains exactly what elements are introduced, what parts are editable, and the value types involved, with no citations included.
-
----
-
 # ⚡ RapidCrud
 
 A lightning-fast, zero-config React micro-framework engine designed for automated file-system routing and predictive data pre-fetching.

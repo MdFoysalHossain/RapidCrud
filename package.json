@@ -1,7 +1,7 @@
 {
   "name": "rapidcrud",
-  "version": "1.0.2",
-  "description": "RapidCrud is a zero-boilerplate, performance-first CRUD ecosystem for React Js.",
+  "version": "1.0.31",
+  "description": "RapidCrud is A lightning-fast, zero-config React micro-framework engine designed for automated file-system routing and predictive data pre-fetching.",
   "license": "ISC",
   "author": "FoysalHossain",
   "type": "module",

@@ -2,11 +2,11 @@
   "name": "rapidcrud",
   "version": "1.0.31",
   "description": "RapidCrud is A lightning-fast, zero-config React micro-framework engine designed for automated file-system routing and predictive data pre-fetching.",
-  "license": "ISC",
+  "license": "MIT",
   "author": "FoysalHossain",
   "type": "module",
   "main": "dist/index.js",
-  "module" : "dist/index.esm.js",
+  "module": "dist/index.esm.js",
   "files": [
     "dist"
   ],
@@ -30,4 +30,5 @@
     "rollup": "^4.60.4",
     "rollup-plugin-postcss": "^4.0.2"
   }
+  
 }

@@ -42,10 +42,10 @@ export default defineConfig({
 ### Latest Version: 1.0.33 
 
 **Updates:**
-* **Component Name Changes**: <SmartLink /> --> <Link/>, <SmartLoad /> --> <Load/>, <SmartRouter /> --> <Router />, useSmartData() --> useData()
-* **New Component Added**: <Image/>, <Title/>, <Metadata/>, useLoader()
-* **Value Type**: `Array` of Vite plugin objects.
+* **Component Name Changes**: ``<SmartLink /> --> <Link/>, <SmartLoad /> --> <Load/>, <SmartRouter /> --> <Router />, useSmartData() --> useData()``
+* **New Component Added**: ``<Image/>, <Title/>, <Metadata/>, useLoader()``
 
+---
 
 #### 📋 Configuration Reference Details
 

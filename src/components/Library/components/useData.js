@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { smartStore } from './store';
 
-export function useSmartData(id) {
+export function useData(id) {
   const [dataState, setDataState] = useState(() => smartStore.get(id));
 
   useEffect(() => {

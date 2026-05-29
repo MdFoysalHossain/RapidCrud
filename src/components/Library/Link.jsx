@@ -1,7 +1,7 @@
 import React from 'react';
 import { smartStore } from './components/store';
 
-export function SmartLink({ 
+export function Link({ 
   to, 
   fetch: url, 
   id, 

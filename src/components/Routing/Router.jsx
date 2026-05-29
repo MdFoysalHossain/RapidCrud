@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { smartStore } from "../Link/components/store";
+import { smartStore } from '../Library/components/store';
 
 
 
@@ -59,7 +59,7 @@ function resolveActiveRoute(currentPath) {
   return null;
 }
 
-export function SmartRouter() {
+export function Router() {
   const [currentPath, setCurrentPath] = useState(() => smartStore.getPath());
   const [PageModule, setPageModule] = useState(null);
   const [routeParams, setRouteParams] = useState({});

@@ -13,6 +13,16 @@ npm i rapidcrud
 
 ```
 
+---
+
+### Latest Version: 1.0.33 
+
+**Updates:**
+* **Component Name Changes**: ``<SmartLink /> --> <Link/>, <SmartLoad /> --> <Load/>, <SmartRouter /> --> <Router />, useSmartData() --> useData()``
+* **New Component Added**: ``<Image/>, <Title/>, <Metadata/>, useLoader()``
+
+---
+
 ### ⚙️ Required Vite Path Configuration
 
 Because RapidCrud relies on structured file scanning, you must add path aliases to your project build configuration. Update your root `vite.config.js` file to include the `@` alias resolver:
@@ -37,15 +47,7 @@ export default defineConfig({
 
 ```
 
----
 
-### Latest Version: 1.0.33 
-
-**Updates:**
-* **Component Name Changes**: ``<SmartLink /> --> <Link/>, <SmartLoad /> --> <Load/>, <SmartRouter /> --> <Router />, useSmartData() --> useData()``
-* **New Component Added**: ``<Image/>, <Title/>, <Metadata/>, useLoader()``
-
----
 
 #### 📋 Configuration Reference Details
 

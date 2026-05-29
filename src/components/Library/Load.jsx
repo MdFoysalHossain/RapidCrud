@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { smartStore } from './components/store';
 
-export function SmartLoad({ fetch: url, id, children, onSuccess }) {
+export function Load({ fetch: url, id, children, onSuccess }) {
   const cacheKey = id || `auto_${btoa(url).slice(0, 8)}`;
   const [cacheState, setCacheState] = useState(() => smartStore.get(cacheKey));
 

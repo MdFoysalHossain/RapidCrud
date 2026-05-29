@@ -94,8 +94,8 @@ export function Router() {
     }
   }, [currentPath]);
 
-  if (hasError) return <div style={{ padding: '20px' }}>404 - Page view not found inside system directories</div>;
-  if (!PageModule) return <div style={{ padding: '20px' }}>Synchronizing layout stream...</div>;
+  if (hasError) return <div style={{ padding: '20px' }}> </div>; //Under "src/pages/" create home.jsx 
+  if (!PageModule) return <div style={{ padding: '20px' }}> </div>; //Loading state placeholder
 
   // Resolve the cached payload matching either standard or calculated identifier
   // Fallback checks both global internal state maps

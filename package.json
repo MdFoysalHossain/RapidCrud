@@ -1,6 +1,6 @@
 {
   "name": "rapidcrud",
-  "version": "1.0.33",
+  "version": "1.0.35",
   "description": "RapidCrud is A lightning-fast, zero-config React micro-framework engine designed for automated file-system routing and predictive data pre-fetching.",
   "license": "MIT",
   "author": "FoysalHossain",

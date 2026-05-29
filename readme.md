@@ -15,7 +15,7 @@ npm i rapidcrud
 
 ---
 
-### Latest Version: 1.0.33 
+### Latest Version: 1.0.35 
 
 **Updates:**
 * **Component Name Changes**: ``<SmartLink /> --> <Link/>, <SmartLoad /> --> <Load/>, <SmartRouter /> --> <Router />, useSmartData() --> useData()``
